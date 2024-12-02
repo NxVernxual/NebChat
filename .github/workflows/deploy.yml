@@ -3,7 +3,7 @@ name: Deploy from Private Repo to Public Pages Repo
 on:
   push:
     branches:
-      - main  # Or your preferred branch
+      - test  # Or your preferred branch
 
 jobs:
   deploy:
