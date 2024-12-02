@@ -1,30 +1,25 @@
-name: Deploy to GitHub Pages
+name: Deploy from Private Repo to Public Pages Repo
 
 on:
   push:
     branches:
-      - test  # Change to your default branch if necessary
+      - main  # Or your preferred branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js (if your site uses JavaScript)
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'  # Use the version you need
-
-      - name: Install dependencies
-        run: npm install  # Adjust if you're not using npm
-
       - name: Build the site
-        run: npm run build  # Adjust for your build process (e.g., Jekyll, Hugo, etc.)
+        run: echo "No build step needed for static sites"
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to Public Repo
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # Adjust to your build output directory
+          publish_branch: gh-pages
+          publish_dir: ./  # Directory with your website files
+          external_repository: NebChat/public-repo-name
