@@ -7,8 +7,7 @@ Can be easily accissable from both Desktop and Mobile browsers.
 - scroll-bar. 
 - messages can be sent easily by pressing `ENTER`
 
-![Preview](https://ibb.co/fYPrpVs) <- front image for github
-
+https://ibb.co/fYPrpVs
 
 [DISCORD SERVER FOR SUPPORT](https://discord.com/invite/M32TYGR)
 
