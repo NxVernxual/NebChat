@@ -1,6 +1,6 @@
-# NEBULOUS CHAT CLONE
-A very simple and minumu online chat Made for Nebulous.io game as a fan project and to support the game through the browser.
-Can be easily accissable from both Desktop and Mobile browsers.
+<h1 align="center" id="top">Nebulous Chat Clone</h1>
+Introducion Nebulous Chat, a very simple and minimum online chat made for Nebulous.io game as a fan project and to support the game through the browser.
+This chat an be easily accissable from both Desktop and Mobile browsers. currently has no networking or connectivity or any kind of connection to the gam API, databases or even has sockets. Just pure HTML, CSS and JS.
 
 ## **includes:** 
 - double click function for triggering full screen mode.
@@ -9,7 +9,7 @@ Can be easily accissable from both Desktop and Mobile browsers.
 
 [test](https://i.ibb.co/27fct0T/download.jpg)
 
-[DISCORD SERVER FOR SUPPORT](https://discord.com/invite/M32TYGR)
+join the [Discord](https://discord.com/invite/98KmTJJ) for support and help or any future suggestions!
 
 
 [Privacy Policy](https://www.simplicialsoftware.com/Home/PrivacyPolicy)
