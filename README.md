@@ -1,5 +1,5 @@
 <h1 align="center" id="top">Nebulous Chat Clone</h1>
-Introduction Nebulous Chat, a very simple and minimal online chat made for the Nebulous.io game as a fan project and to support the game through the browser.
+Introducting Nebulous Chat, a very simple and minimal online chat made for the Nebulous.io game as a fan project and to support the game through the browser.
 This chat can be easily accessible from both Desktop and Mobile browsers. currently has no networking or connectivity or any kind of connection to the game API, databases, or even has sockets. Just pure HTML, CSS and JS.
 <p align="center">
   <img alt="Github top language" src="https://i.ibb.co/rm99tWY/as2.jpg">
