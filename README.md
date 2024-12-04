@@ -7,7 +7,7 @@ Can be easily accissable from both Desktop and Mobile browsers.
 - scroll-bar. 
 - messages can be sent easily by pressing `ENTER`
 
-https://ibb.co/fYPrpVs
+[test](https://i.ibb.co/27fct0T/download.jpg)
 
 [DISCORD SERVER FOR SUPPORT](https://discord.com/invite/M32TYGR)
 
