@@ -1,7 +1,7 @@
-# WS Chat - Discord Theme
+# NEBULOUS CHAT CLONE
 Made for Nebulous.io game.
 
 ![Preview](https://i.ibb.co/) <- front image for github
 
 
-[Helpful Link](https://www.youtube.com/)
+[DISCORD SERVER FOR SUPPORT]([https://discord.com/invite/M32TYGR)
