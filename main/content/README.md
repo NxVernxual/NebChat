@@ -13,10 +13,10 @@ todo:
 
 more tests will be done on mobile
 
-![Preview](https://i.ibb.co/) <- preview
+Priview:
+![Preview](<https://i.ibb.co/M1dkNR9/Friends-Chat.jpg>)
 
-[Helpful Link](https://www.youtube.com/)
+Acess it from [HERE](https://nxvernxual.github.io/NebChat/main/content/)
 
-and for formatting
-https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet
+Link for BETTER formatting: https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet
 
