@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+    <title>fixing</title>
+    <script src="https://unpkg.com/htmx.org"></script>
+    <style>
+        :root {
+            --background-color: rgb(26 75 155);
+        }
+       body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .chat-container {
+            width: 97%;
+            max-width: 400px;
+            height: 99%;
+            background-color: var(--background-color);
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            padding: 1px;
+            padding-bottom: env(safe-area-inset-bottom);
+            box-sizing: border-box;
+            color: rgb(255, 255, 255);
+            border: 2px solid #0E3669;
+            opacity: 63%;
+            bottom: 0;
+            left: 50%;
+            position: fixed;
+            transform: translateX(-50%);
+        }
+
+        .chat-header {
+            background-color: var(--background-color);
+            color: rgb(255, 255, 255);
+            padding: 0px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-title {
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+  
+        }
+        .test-label {
+            text-align: center;
+            font-size: 22px;
+            color: white;
+        }
+        .chat-header div {
+            flex: 1;
+            text-align: center;
+            size: 0px;
+        }
+        .main-content {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+            margin-top: 0mm;
+            position: relative;
+        }
+        .context-menu {
+            position: absolute;
+            display: none;
+            background: #333;
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .context-menu button {
+            display: block;
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            text-align: left;
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+    .context-menu button:hover {
+      background: #444;
+    }
+        .chat-window {
+            flex-grow: 3;
+            background-color: var(--background-color);
+            border: 1px solid #006cf8;
+            padding: 5px;
+            overflow-y: auto;
+            margin-right: 5px;
+            color: rgb(255, 255, 255);
+            font-size: 13px;
+            border-radius: 8px;
+            text-align: left; 
+            position: relative;
+        }
+/**<-------START OF SCROLLBAR-------->**/ 
+        /* Scrollbar Container */
+        .chat-window::-webkit-scrollbar {
+            width: 5px;
+        }
+        .chat-window::-webkit-scrollbar-thumb {
+            background: transparent;
+            transition: background 0.5s ease-in-out;
+            border-radius: 0px;
+        }
+        .chat-window::-webkit-scrollbar-track {
+            background: transparent;
+        }
+/**<-------ENDING OF SCROLLBAR-------->**/ 
+        /* Show scrollbar when active */
+        .chat-window.show-scrollbar::-webkit-scrollbar-thumb {
+            background: #b4b4b4;
+        }
+
+        .players-window {
+            width: 143px; 
+            flex-grow: 1;
+            background-color: var(--background-color);
+            border: 1px solid #006cf8;
+            overflow-y: hidden;
+            padding: 10px;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .chat-input-container {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #0E3669;
+            gap: 5px;
+        }
+
+        .chat-input {
+            outline: none;
+            flex-grow: 1;
+            padding: 10px;
+            border: 2px solid #0E3669;
+            background-color: #001a4d;
+            color: white;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+
+        .send-button, .public-button {
+            background-color: var(--background-color);
+            border: 2px solid #006cf8;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            width: 70px;
+            height: 35px;
+        }
+
+        .send-button img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .done-button {
+            background-color: var(--background-color);
+            border: 2px solid #1B58CB;
+            color: white;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            border-color: #006cf8
+        }
+
+        .message {
+            color: #ffffff;
+            border-bottom: 1px solid #1e426f;
+            padding: 5px 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            text-align: left;
+            margin-bottom: 5px;
+            margin-left: 0px; 
+            margin-right: 0px; /
+        }
+
+        .message::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%; 
+            height: 2px; 
+            background-color: var(--background-color); 
+        }
+
+        .scroll-container {
+            position: absolute;
+            width: 5px;
+            right: 5px;
+            height: calc(100% - 40mm);
+	        overflow-y: scroll;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="chat-container" class="chat-container"> 
+        <div class="chat-header"> </div>
+        <span class="chat-title">TEXT</span>
+        <div class="chat-header">
+            <span class="chat-label">CHAT</span>
+            <span class="players-label">Players</span>
+        </div>  
+        <div class="main-content">
+            <div class="chat-window">
+                SERVER: CONNECTED 6/8/24 10:04:55 AM
+                <div class="scrollbar-track"></div>
+                <div class="scrollbar-thumb"></div>
+                <div class="scroll-container"></div>
+            </div>
+            <div class="scroll-container"></div> 
+            <div class="players-window">Player</div>          
+        </div>
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" placeholder="">
+            <button class="public-button">PUBLIC</button>
+            <button class="send-button">
+                <img src="https://i.postimg.cc/L6NqdF6z/send.png" alt="">
+            </button>
+            </div>
+            <button class="done-button">DONE</button></div>
+            <div id="context-menu" class="context-menu">
+                <button hx-post="/cancel">Cancel</button>
+                <button hx-post="/block">Block</button>
+                <button hx-post="/report">Report</button>
+                <button hx-get="/copy-message">Copy Message</button>
+                <button hx-get="/copy-id">Copy ID</button>
+                <button hx-get="/view-profile">View Profile</button>
+                <button hx-get="/send-message">Send Message</button>
+                <button hx-post="/mute">Mute</button>
+            </div>
+    <script>
+ document.querySelector('.chat-container').addEventListener('dblclick', toggleFullScreen);
+
+ // Function to request or exit fullscreen mode
+ function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        var elem = document.documentElement; 
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { 
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { 
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { 
+            elem.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { 
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { 
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { 
+            document.msExitFullscreen();
+        }
+    }
+}
+
+
+/*  Adjusting Layout for Virtual Keyboard */
+function adjustForKeyboard() {
+    const chatContainer = document.querySelector('.chat-container');
+    const doneButton = document.querySelector('.done-button');
+
+    const initialHeight = window.innerHeight;
+            window.addEventListener('resize', () => {
+                const currentHeight = window.innerHeight;
+                
+                if (currentHeight < initialHeight - 100) {
+                    chatContainer.style.height = '60%';
+                    doneButton.style.display = 'none';
+                } else {
+                    chatContainer.style.height = '99%';
+                    doneButton.style.display = 'block';
+                }
+            });
+        }
+adjustForKeyboard();
+/* Sending Messages */
+document.querySelector('.send-button').addEventListener('click', () => {
+    const chatInput = document.querySelector('.chat-input');
+    const chatWindow = document.querySelector('.chat-window');
+
+    const message = chatInput.value.trim();
+    if (message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        messageElement.textContent = message;
+
+        chatWindow.appendChild(messageElement);
+        chatInput.value = '';
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+});
+/* Ending Chat Session */
+document.querySelector('.done-button').addEventListener('click', () => {
+            alert('Chat session ended.');
+});
+/* Sending Messages via Enter Key */
+document.querySelector('.chat-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.querySelector('.send-button').click();
+            }
+});
+
+        const chatInput = document.querySelector('.chat-input');
+        const sendButton = document.querySelector('.send-button');
+        const chatWindow = document.querySelector('.chat-window');
+        const scrollbarThumb = document.querySelector('.scrollbar-thumb');
+        const contextMenu = document.getElementById('context-menu');
+
+        let scrollTimer = null;
+        let isScrolling = false;
+/* Function to Update Scrollbar Thumb Position */
+        function updateScrollbarThumb() {
+            const containerHeight = chatWindow.clientHeight;
+            const contentHeight = chatWindow.scrollHeight;
+            const scrollTop = chatWindow.scrollTop;
+            
+            const thumbHeight = Math.max(
+                (containerHeight / containerHeight) - contentHeight
+            );
+            const thumbTop = (scrollTop * containerHeight) / contentHeight;
+            
+            scrollbarThumb.style.height = `${thumbHeight}px`;
+            scrollbarThumb.style.top = `${thumbTop}px`;
+        }
+/* Show/Hide Scrollbar */
+        function showScrollbar() {
+            chatWindow.classList.add('show-scrollbar');
+            isScrolling = true;
+        }
+
+        function hideScrollbar() {
+            if (!isScrolling) return;
+            chatWindow.classList.remove('show-scrollbar');
+            isScrolling = false;
+        }
+/* Event Listeners for Scrollbar */
+        chatWindow.addEventListener('scroll', () => {
+            showScrollbar();
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(hideScrollbar, 1000);
+        });
+
+        chatWindow.addEventListener('mousemove', () => {
+                if (!isScrolling) {
+                showScrollbar();
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(hideScrollbar, 1000);
+            }
+        });
+
+        sendButton.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.textContent = message;
+
+                chatWindow.appendChild(messageElement);
+                chatInput.value = '';
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+                
+                showScrollbar();
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(hideScrollbar, 1000);
+                updateScrollbarThumb(); 
+            }
+        });
+
+        updateScrollbarThumb()
+        setTimeout(hideScrollbar, 1000);
+
+        window.addEventListener('resize', () => {
+            if (isScrolling) {
+                showScrollbar();
+            }
+        });
+
+document.addEventListener("DOMContentLoaded", () => {
+        const contextMenu = document.getElementById('context-menu');
+        });
+/* Function to open the context menu */
+function openMenu(event) {
+                event.preventDefault();
+                let x = event.pageX, y = event.pageY;
+                const menuWidth = contextMenu.offsetWidth, menuHeight = contextMenu.offsetHeight;
+                const windowWidth = window.innerWidth, windowHeight = window.innerHeight;
+                if (x + menuWidth > windowWidth) x -= menuWidth;
+                if (y + menuHeight > windowHeight) y -= menuHeight;
+                contextMenu.style.left = `${x}px`;
+                contextMenu.style.top = `${y}px`;
+                contextMenu.style.display = 'block';
+            }
+            
+/* Adding context menu event to added messages */
+            document.addEventListener('contextmenu', (event) => {
+                if (event.target.classList.contains('message')) {
+                    openMenu(event);
+                }
+            });
+            
+/* Close context menu on click outside */
+            document.addEventListener('click', (event) => {
+                if (!event.target.closest('.context-menu')) {
+                    contextMenu.style.display = 'none';
+                }
+            });
+</script>
+</body>
+</html>
