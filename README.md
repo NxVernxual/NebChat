@@ -13,7 +13,7 @@ This chat can be easily accessible from both Desktop and Mobile browsers. curren
   <img alt="Github top language" src="https://i.ibb.co/rm99tWY/as2.jpg">
 </p>
 
-## <h1 align="center" id="top">TRY IT FROM [HERE](https://nxvernxual.github.io/NebChat/final/NebChatFinal.html)</h1>
+<h1 align="center" id="top">TRY IT FROM [HERE](https://nxvernxual.github.io/NebChat/final/NebChatFinal.html)</h1>
 
 ## **includes:** 
 - double click function for triggering full screen mode.
