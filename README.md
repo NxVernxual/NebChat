@@ -20,10 +20,12 @@ TRY IT FROM [HERE](https://nxvernxual.github.io/NebChat/final/NebChatFinal.html)
 - messages can be sent easily by pressing `ENTER`.
 - fits perfectly fine for mobile view on both desktop and mobile.
 
+---
 
-## this project is still in beta developemnt stage!
+> [!NOTE]
+this project is still in beta developemnt stage!
 
-
+> [!TIP]
 join the [Discord](https://discord.com/invite/98KmTJJ) for support and help or any future suggestions!
 
 [Privacy Policy](https://www.simplicialsoftware.com/Home/PrivacyPolicy) - [End-User License Agreement](https://www.simplicialsoftware.com/Home/EULA)
