@@ -32,7 +32,7 @@ join the [Discord](https://discord.com/invite/98KmTJJ) for support and help or a
 
 Contact: support@simplicialsoftware.com or Join thier Discord server [HERE](https://discord.com/invite/nebulous)
 
-ALL RIGHTS BELONG TO Simplicial Software for making this game so without it, this project wouldnt exists.
-© 2015-2024 Simplicial Software. All Rights Reserved.
+ALL RIGHTS BELONG TO Simplicial Software for making this game so without it, this project wouldnt exist.
+© 2015-2025 Simplicial Software. All Rights Reserved.
 
 Special thanks goes to the game creator Greg Anderson
