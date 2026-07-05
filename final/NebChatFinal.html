@@ -299,11 +299,12 @@ function adjustForKeyboard() {
     const chatContainer = document.querySelector('.chat-container');
     const doneButton = document.querySelector('.done-button');
 
-    const initialHeight = window.innerHeight;
-            window.addEventListener('resize', () => {
-                const currentHeight = window.innerHeight;
+    if (!window.visualViewport) return; // fallback: skip on unsupported browsers
+
+            window.visualViewport.addEventListener('resize', () => {
+                const keyboardLikelyOpen = window.visualViewport.height < window.screen.height * 0.75;
                 
-                if (currentHeight < initialHeight - 100) {
+                if (keyboardLikelyOpen) {
                     chatContainer.style.height = '60%';
                     doneButton.style.display = 'none';
                 } else {
