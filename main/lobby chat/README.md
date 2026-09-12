@@ -17,6 +17,6 @@ more tests will be done on mobile and Desktop
 Preview:
 ![Preview](<https://i.ibb.co/V9whyjz/Mutliplayer-Chat.jpg>)
 
-Acess it from [HERE](https://nxvernxual.github.io/NebChat/main/contentV2/)
+Acess it from [HERE](https://nxvernxual.github.io/NebChat/main/lobby%20chat/)
 
 Link for BETTER formatting: https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet
