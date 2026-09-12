@@ -17,6 +17,6 @@ more tests will be done on mobile
 Preview:
 ![Preview](<https://i.ibb.co/M1dkNR9/Friends-Chat.jpg>)
 
-Acess it from [HERE](https://nxvernxual.github.io/NebChat/main/content/)
+Acess it from [HERE](https://nxvernxual.github.io/NebChat/main/friends%20chat/)
 
 Link for BETTER formatting: https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet
