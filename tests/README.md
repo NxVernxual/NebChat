@@ -11,4 +11,4 @@ more tests will be done on mobile and Desktop
 
 No Preview needed!
 
-Acess it from [HERE](https://nxvernxual.github.io/NebChat/v2/)
+Acess it from [HERE](https://nxvernxual.github.io/NebChat/tests/)
